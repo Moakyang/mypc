@@ -1,2 +1,7 @@
 node_modules
 yarn-error.log
+tmp
+log
+bundle.js
+bundle.js.map
+.DS_Store

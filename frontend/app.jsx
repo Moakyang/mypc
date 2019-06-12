@@ -17,11 +17,11 @@ class App extends Component {
   }
 
   render() {
-    const indexComp = () => <Index selectedHeader={this.state.header} />
+    const indexComp = (props) => <Index {...props} selectedHeader={this.state.header} />
     return (
       <Router>
         <Header value={this.state.header} onChange={this.changeHeaderState.bind(this)} />
-        <Route path='/' exact component={indexComp} />
+        <Route path='/' exact render={indexComp} />
       </Router>
     );
   }
