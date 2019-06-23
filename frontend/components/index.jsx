@@ -3,10 +3,14 @@ import PropTypes from 'prop-types'
 
 import { HEADER_STATES } from '../utils/constants'
 
+import { First, Second, Third } from './main'
+
 function Index(props) {
   return (
     <React.Fragment>
-      <div>{HEADER_STATES[props.selectedHeader]}</div>
+      <First />
+      <Second />
+      <Third />
     </React.Fragment>
   )
 }
