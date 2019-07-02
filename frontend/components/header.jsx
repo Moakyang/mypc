@@ -38,18 +38,27 @@ function Header(props) {
     { value, onChange } = props;
 
   return (
-    <div>
-      <AppBar position="static">
+    <div className={classes.root}>
+      <AppBar className={classes.header} position="static">
         <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="Menu">
+          <IconButton
+            className={classes.logo}
+            edge="start"
+            color="inherit"
+            aria-label="Menu"
+          >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6">목양장로교회</Typography>
-          <Typography variant="h6">Moakyang Presbyterian Church</Typography>
+          <Typography className={classes.title} variant="h6">
+            목양장로교회
+          </Typography>
+          <Typography className={classes.title} variant="h6">
+            Moakyang Presbyterian Church
+          </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
-      <Paper>
+      <Paper className={classes.root}>
         <Tabs
           value={value}
           onChange={onChange}
