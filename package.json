@@ -1,12 +1,13 @@
 {
   "name": "mypc",
   "version": "1.0.0",
-  "description": "Frontend for Moakyang Website",
+  "description": "Moakyang Website",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "webpack",
-    "webpack": "webpack --watch --mode=development"
+    "webpack": "webpack --watch --mode=development",
+    "lint": "eslint . --config=.eslintrc"
   },
   "author": "roycejh",
   "license": "MIT",
