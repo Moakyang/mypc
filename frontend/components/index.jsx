@@ -15,8 +15,4 @@ function Index(props) {
   )
 }
 
-Index.propTypes = {
-  selectedHeader: PropTypes.number
-}
-
 export default Index

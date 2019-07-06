@@ -12,11 +12,10 @@ import MenuIcon from '@material-ui/icons/Menu'
 import Paper from '@material-ui/core/Paper'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
-import Popper from '@material-ui/core/Popper'
-import MenuItem from '@material-ui/core/MenuItem'
-import MenuList from '@material-ui/core/MenuList'
 
-import { HEADER_STATES, SUB_HEADER_STATES } from '../utils/constants'
+import SubMenu from './submenu'
+
+import { HEADER_STATES, SUB_HEADER_STATES } from '../../utils/constants'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,8 +31,8 @@ const useStyles = makeStyles(theme => ({
 }))
 
 function Header(props) {
-  const [toggle, settoggle] = useState(true),
-    [anchorEl, setanchorEl] = useState(null),
+  const [toggle, setToggle] = useState(true),
+    [anchorEl, setAnchorEl] = useState(this),
     [subMenu, setsubMenu] = useState([]),
     classes = useStyles(),
     { value, onChange } = props
@@ -62,55 +61,41 @@ function Header(props) {
       <Paper className={classes.root}>
         <Tabs
           value={value}
-          onChange={onChange}
           indicatorColor='primary'
           textColor='primary'
           centered
         >
           {Object.values(HEADER_STATES).map((i, v) => (
             <Tab
-              key={v}
-              label={i}
-              onMouseEnter={e => {
-                const currentTarget = e.currentTarget
-                settoggle(true)
-                setanchorEl(currentTarget)
-                setsubMenu(
-                  SUB_HEADER_STATES[currentTarget.children[0].innerText]
-                )
-              }}
-              data-key={v}
               aria-owns={open ? 'menu-list-grow' : undefined}
               aria-haspopup={'true'}
+              disableFocusRipple
+              disableRipple
+              key={v}
+              label={i}
+              data-key={v}
+              onChange={() => {
+                setToggle(false)
+              }}
+              onMouseEnter={e => {
+                const ct = e.currentTarget
+                onChange('', v)
+                setToggle(true)
+                setAnchorEl(ct)
+                setsubMenu(SUB_HEADER_STATES[v])
+              }}
             />
           ))}
         </Tabs>
       </Paper>
-      <Popper open={toggle} anchorEl={anchorEl} id='menu-list-grow'>
-        <Paper>
-          <MenuList>
-            {Object.values(subMenu).map((item, index) => (
-              <MenuItem
-                key={index}
-                onClick={e => {
-                  const currentTarget = e.currentTarget
-                  setanchorEl(null)
-                  settoggle(false)
-                }}
-              >
-                {item}
-              </MenuItem>
-            ))}
-          </MenuList>
-        </Paper>
-      </Popper>
+      <SubMenu toggle={toggle} anchorEl={anchorEl} setAnchorEl={setAnchorEl} setToggle={setToggle} subMenu={subMenu} />
     </div>
   )
 }
 
 Header.propTypes = {
   onChange: PropTypes.func,
-  value: PropTypes.number
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.bool])
 }
 
 export default Header
