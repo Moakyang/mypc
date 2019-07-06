@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 function Header(props) {
-  const [toggle, setToggle] = useState(true),
+  const [toggle, setToggle] = useState(false),
     [anchorEl, setAnchorEl] = useState(this),
     [subMenu, setsubMenu] = useState([]),
     classes = useStyles(),
@@ -88,7 +88,14 @@ function Header(props) {
           ))}
         </Tabs>
       </Paper>
-      <SubMenu toggle={toggle} anchorEl={anchorEl} setAnchorEl={setAnchorEl} setToggle={setToggle} subMenu={subMenu} />
+
+      <SubMenu
+        toggle={toggle}
+        anchorEl={anchorEl}
+        setAnchorEl={setAnchorEl}
+        setToggle={setToggle}
+        subMenu={subMenu} />
+
     </div>
   )
 }

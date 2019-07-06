@@ -8,7 +8,7 @@ import MenuList from '@material-ui/core/MenuList'
 function SubMenu(props) {
     const { toggle, setToggle, anchorEl, setAnchorEl, subMenu } = props
     return (
-        <Popper open={toggle} anchorEl={anchorEl} id='menu-list-grow'>
+        <Popper open={toggle} anchorEl={anchorEl} disablePortal id='menu-list-grow'>
             <Paper>
                 <MenuList>
                     {Object.values(subMenu).map((item, index) => (
