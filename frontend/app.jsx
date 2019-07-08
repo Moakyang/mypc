@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Index from "./components/index";
-import Header from "./components/headzer";
+import Header from "./components/header";
 
 import "./reset.css";
 
