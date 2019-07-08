@@ -1,30 +1,33 @@
-import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import Index from './components/index'
-import Header from './components/header'
+import Index from "./components/index";
+import Header from "./components/headzer";
 
-import './reset.css'
+import "./reset.css";
 
 class App extends Component {
   constructor(props) {
-    super(props)
-    this.state = {'header': false}
+    super(props);
+    this.state = { header: false };
   }
 
-  changeHeaderState (_, newValue) {
-    this.setState({'header': newValue})
+  changeHeaderState(_, newValue) {
+    this.setState({ header: newValue });
   }
 
   render() {
-    const indexComp = (props) => <Index {...props} />
+    const indexComp = props => <Index {...props} />;
     return (
       <Router>
-        <Header value={this.state.header} onChange={this.changeHeaderState.bind(this)} />
-        <Route path='/' exact render={indexComp} />
+        <Header
+          value={this.state.header}
+          onChange={this.changeHeaderState.bind(this)}
+        />
+        <Route path="/" exact render={indexComp} />
       </Router>
-    )
+    );
   }
 }
 
-export default App
+export default App;
