@@ -4,8 +4,6 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Index from "./components/index";
 import Header from "./components/header";
 
-import "./reset.css";
-
 class App extends Component {
   constructor(props) {
     super(props);
