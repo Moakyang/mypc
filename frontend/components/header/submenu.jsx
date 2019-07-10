@@ -18,7 +18,6 @@ class SubMenu extends Component {
       menuLink
     } = this.props;
 
-    debugger;
     return (
       <Popper
         open={toggle}

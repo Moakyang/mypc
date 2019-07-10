@@ -44,7 +44,7 @@ function Header(props) {
     [subMenu, setsubMenu] = useState([]),
     [menuLink, setMenuLink] = useState([]),
     classes = useStyles(),
-    { value, onChange } = props;
+    { value, onChange, onChangeMenu } = props;
   const closeToggle = () => {
     setToggle(false);
   };
@@ -95,6 +95,7 @@ function Header(props) {
                     setAnchorEl(ct);
                     setsubMenu(SUB_HEADER_STATES[v]);
                     setMenuLink(HEADER_STATES_LINKS[v]);
+                    onChangeMenu("", HEADER_STATES_LINKS[v]);
                   }}
                 />
               </RouterLink>
