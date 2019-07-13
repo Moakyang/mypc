@@ -40,6 +40,10 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1,
     letterSpacing: theme.spacing(0.5)
+  },
+  link: {
+    textDecoration: 'None',
+    color: 'inherit',
   }
 }))
 
@@ -80,11 +84,10 @@ function Header(props) {
           <Tabs
             value={value}
             indicatorColor='primary'
-            textColor='primary'
             centered
           >
             {Object.values(HEADER_STATES).map((i, v) => (
-              <RouterLink to={HEADER_STATES_LINKS[v]}>
+              <RouterLink key={i} className={classes.link} to={HEADER_STATES_LINKS[v]}>
                 <Tab
                   aria-owns={open ? 'menu-list-grow' : undefined}
                   aria-haspopup={'true'}
