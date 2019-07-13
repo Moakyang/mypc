@@ -28,7 +28,7 @@ export const SUB_HEADER_STATES = {
     '장년부'
   ],
   3: ['21 나라', '목장'],
-  4: ['gallery'],
+  4: ['Gallery'],
   5: ['Upcoming Events'],
   6: ['가정교회', '목양만나', '주보']
 }

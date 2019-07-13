@@ -26,6 +26,11 @@ const useStyles = makeStyles(theme => ({
   logo: {
     marginRight: theme.spacing(2)
   },
+  menu: {
+    flexGrow: 1,
+    cursor: 'pointer',
+    boxShadow: 'None',
+  },
   title: {
     flexGrow: 1,
     letterSpacing: theme.spacing(0.5)
@@ -65,7 +70,7 @@ function Header(props) {
             <Button color='inherit'>Login</Button>
           </Toolbar>
         </AppBar>
-        <Paper className={classes.root}>
+        <Paper className={classes.menu}>
           <Tabs
             value={value}
             indicatorColor='primary'

@@ -7,8 +7,10 @@ import Divider from '@material-ui/core/Divider'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: theme.spacing(3, 2),
-    boxShadow: 'None'
+    padding: theme.spacing(3,2),
+    boxShadow: 'None',
+    width: '75%',
+    margin: theme.spacing(0)
   },
   header: {
     alignContent: theme.spacing(3, 2)
