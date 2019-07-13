@@ -1,13 +1,21 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 
 import Paper from '@material-ui/core/Paper'
 import Popper from '@material-ui/core/Popper'
 import MenuItem from '@material-ui/core/MenuItem'
 import MenuList from '@material-ui/core/MenuList'
-import Link from '@material-ui/core/Link'
-import { Link as RouterLink } from 'react-router-dom'
 
 class SubMenu extends Component {
+  constructor(props) {
+    super(props)
+    this.handleCallToRouter.bind(this)
+  }
+
+  handleCallToRouter(route) {
+    this.props.history.push(route)
+  }
+
   render() {
     const {
       toggle,
@@ -15,7 +23,7 @@ class SubMenu extends Component {
       anchorEl,
       setAnchorEl,
       subMenu,
-      menuLink
+      routeLink
     } = this.props
 
     return (
@@ -31,9 +39,9 @@ class SubMenu extends Component {
               <MenuItem
                 key={index}
                 onClick={e => {
-                  const currentTarget = e.currentTarget
                   setAnchorEl(e)
                   setToggle(false)
+                  this.handleCallToRouter(routeLink)
                 }}
               >
                 {item}
@@ -46,4 +54,4 @@ class SubMenu extends Component {
   }
 }
 
-export default SubMenu
+export default withRouter(SubMenu)

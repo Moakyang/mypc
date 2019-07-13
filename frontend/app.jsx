@@ -23,6 +23,7 @@ class App extends Component {
           onChange={this.changeHeaderState.bind(this)}
         />
         <Route path='/' exact render={indexComp} />
+        <Route path='/jimin' exact render={indexComp} />
       </Router>
     )
   }

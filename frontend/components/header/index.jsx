@@ -1,6 +1,7 @@
 /* eslint-disable semi */
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { Link as RouterLink, withRouter } from 'react-router-dom'
 
 import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
@@ -14,7 +15,6 @@ import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Link from '@material-ui/core/Link'
-import { Link as RouterLink } from 'react-router-dom'
 
 import SubMenu from './submenu'
 
@@ -27,7 +27,6 @@ import {
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    cursor: 'pointer'
   },
   logo: {
     marginRight: theme.spacing(2)
@@ -41,17 +40,13 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     letterSpacing: theme.spacing(0.5)
   },
-  link: {
-    textDecoration: 'None',
-    color: 'inherit',
-  }
 }))
 
 function Header(props) {
   const [toggle, setToggle] = useState(false),
     [anchorEl, setAnchorEl] = useState(this),
     [subMenu, setsubMenu] = useState([]),
-    [menuLink, setMenuLink] = useState([]),
+    [routeLink, setRouteLink] = useState(),
     classes = useStyles(),
     { value, onChange } = props
   const closeToggle = () => {
@@ -87,25 +82,21 @@ function Header(props) {
             centered
           >
             {Object.values(HEADER_STATES).map((i, v) => (
-              <RouterLink key={i} className={classes.link} to={HEADER_STATES_LINKS[v]}>
-                <Tab
-                  aria-owns={open ? 'menu-list-grow' : undefined}
-                  aria-haspopup={'true'}
-                  disableFocusRipple
-                  disableRipple
-                  key={v}
-                  label={i}
-                  data-key={v}
-                  onClick={e => {
-                    const ct = e.currentTarget
-                    onChange('', v)
-                    setToggle(true)
-                    setAnchorEl(ct)
-                    setsubMenu(SUB_HEADER_STATES[v])
-                    setMenuLink(HEADER_STATES_LINKS[v])
-                  }}
-                />
-              </RouterLink>
+              <Tab
+                disableFocusRipple
+                disableRipple
+                key={v}
+                label={i}
+                data-key={v}
+                onClick={e => {
+                  const ct = e.currentTarget
+                  onChange('', v)
+                  setToggle(true)
+                  setAnchorEl(ct)
+                  setsubMenu(SUB_HEADER_STATES[v])
+                  setRouteLink(HEADER_STATES_LINKS[v])
+                }}
+              />
             ))}
           </Tabs>
         </Paper>
@@ -116,7 +107,7 @@ function Header(props) {
         setAnchorEl={setAnchorEl}
         setToggle={setToggle}
         subMenu={subMenu}
-        menuLink={menuLink}
+        routeLink={routeLink}
       />
     </div>
   )
@@ -127,4 +118,4 @@ Header.propTypes = {
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.bool])
 }
 
-export default Header
+export default withRouter(Header)
