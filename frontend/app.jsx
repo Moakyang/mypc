@@ -10,7 +10,7 @@ class App extends Component {
     this.state = { header: false }
   }
 
-  changeHeaderState(_, newValue) {
+  changeHeaderState(newValue) {
     this.setState({ header: newValue })
   }
 
@@ -20,7 +20,7 @@ class App extends Component {
       <Router>
         <Header
           value={this.state.header}
-          onChange={this.changeHeaderState.bind(this)}
+          onChangeHeader={this.changeHeaderState.bind(this)}
         />
         <Route path='/' exact render={indexComp} />
         <Route path='/jimin' exact render={indexComp} />

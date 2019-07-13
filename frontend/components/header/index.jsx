@@ -27,6 +27,8 @@ import {
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
+    border: 'None',
+    boxShadow: 'None',
   },
   logo: {
     marginRight: theme.spacing(2)
@@ -34,7 +36,6 @@ const useStyles = makeStyles(theme => ({
   menu: {
     flexGrow: 1,
     cursor: 'pointer',
-    boxShadow: 'None',
   },
   title: {
     flexGrow: 1,
@@ -48,7 +49,7 @@ function Header(props) {
     [subMenu, setsubMenu] = useState([]),
     [routeLink, setRouteLink] = useState(),
     classes = useStyles(),
-    { value, onChange } = props
+    { value, onChangeHeader } = props
   const closeToggle = () => {
     setToggle(false)
   }
@@ -90,7 +91,7 @@ function Header(props) {
                 data-key={v}
                 onClick={e => {
                   const ct = e.currentTarget
-                  onChange('', v)
+                  onChangeHeader(v)
                   setToggle(true)
                   setAnchorEl(ct)
                   setsubMenu(SUB_HEADER_STATES[v])
@@ -114,7 +115,7 @@ function Header(props) {
 }
 
 Header.propTypes = {
-  onChange: PropTypes.func,
+  onChangeHeader: PropTypes.func,
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.bool])
 }
 
