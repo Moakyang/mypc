@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { Component } from 'react'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    fontSize: "24px"
+    fontSize: '24px'
   },
   logo: {
     marginRight: theme.spacing(2)
@@ -14,10 +14,10 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     letterSpacing: theme.spacing(0.5)
   }
-}));
+}))
 
 function Jimin() {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <div className={classes.root}>
       <div>
@@ -69,7 +69,7 @@ function Jimin() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Jimin;
+export default Jimin

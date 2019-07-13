@@ -1,38 +1,34 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React, { Component } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
-import Index from "./components/index";
-import Header from "./components/header";
-import Menu from "./components/menus";
+import Index from './components/index'
+import Header from './components/header'
+
+import Jimin from './components/main/jimin'
 
 class App extends Component {
   constructor(props) {
-    super(props);
-    this.state = { header: false, component: null };
+    super(props)
+    this.state = { header: false }
   }
 
-  changeHeaderState(_, newValue) {
-    this.setState({ header: newValue });
-  }
-
-  changeComponent(_, newValue) {
-    this.setState({ component: newValue });
+  changeHeaderState(newValue) {
+    this.setState({ header: newValue })
   }
 
   render() {
-    const indexComp = props => <Index {...props} />;
+    const indexComp = props => <Index {...props} />
     return (
       <Router>
         <Header
           value={this.state.header}
-          onChange={this.changeHeaderState.bind(this)}
-          onChangeMenu={this.changeComponent.bind(this)}
+          onChangeHeader={this.changeHeaderState.bind(this)}
         />
-        <Route path="/" exact render={indexComp} />
-        <Route path={"/" + this.state.component} component={Menu} />
+        <Route path='/' exact render={indexComp} />
+        <Route path='/jimin' exact render={indexComp} />
       </Router>
-    );
+    )
   }
 }
 
-export default App;
+export default App
