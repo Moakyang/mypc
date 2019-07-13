@@ -7,18 +7,21 @@ import Header from './components/header'
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state = {'header': false}
+    this.state = { header: false }
   }
 
-  changeHeaderState (_, newValue) {
-    this.setState({'header': newValue})
+  changeHeaderState(_, newValue) {
+    this.setState({ header: newValue })
   }
 
   render() {
-    const indexComp = (props) => <Index {...props} />
+    const indexComp = props => <Index {...props} />
     return (
       <Router>
-        <Header value={this.state.header} onChange={this.changeHeaderState.bind(this)} />
+        <Header
+          value={this.state.header}
+          onChange={this.changeHeaderState.bind(this)}
+        />
         <Route path='/' exact render={indexComp} />
       </Router>
     )

@@ -8,6 +8,16 @@ export const HEADER_STATES = {
   6: '등등'
 }
 
+export const HEADER_STATES_LINKS = {
+  0: 'jimin',
+  1: 'royce',
+  2: 'dahn',
+  3: 'phil',
+  4: 'hyunki',
+  5: 'shin',
+  6: 'esop'
+}
+
 export const SUB_HEADER_STATES = {
   0: [
     '교회표어',
@@ -28,7 +38,7 @@ export const SUB_HEADER_STATES = {
     '장년부'
   ],
   3: ['21 나라', '목장'],
-  4: ['Gallery'],
+  4: ['gallery'],
   5: ['Upcoming Events'],
   6: ['가정교회', '목양만나', '주보']
 }
