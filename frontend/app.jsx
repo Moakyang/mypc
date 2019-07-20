@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Index from './components/index'
 import Header from './components/header'
 
-import Jimin from './components/main/jimin'
+import About from './components/menu/about'
 
 class App extends Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class App extends Component {
           onChangeHeader={this.changeHeaderState.bind(this)}
         />
         <Route path='/' exact render={indexComp} />
-        <Route path='/jimin' exact render={indexComp} />
+        <Route path='/about' exact component={About} />
       </Router>
     )
   }

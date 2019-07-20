@@ -9,7 +9,7 @@ export const HEADER_STATES = {
 }
 
 export const HEADER_STATES_LINKS = {
-  0: 'jimin',
+  0: 'about',
   1: 'royce',
   2: 'dahn',
   3: 'phil',
