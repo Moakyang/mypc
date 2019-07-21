@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Link as RouterLink, withRouter } from 'react-router-dom'
+import cx  from 'classnames'
 
 import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
@@ -26,21 +27,42 @@ import {
 
 const useStyles = makeStyles(theme => ({
   root: {
+    maxWidth: '1400px',
+    overflowX: 'hidden',
+    overflowY: 'auto',
     flexGrow: 1,
+    margin: '0 auto',
+    paddingTop: '2em',
+  },
+  header: {
+    backgroundColor: 'inherit',
     border: 'None',
     boxShadow: 'None',
   },
   logo: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
+    color: '#3f51b5',
   },
   menu: {
     flexGrow: 1,
     cursor: 'pointer',
   },
+  subHeader: {
+    fontSize: '1.0125em',
+    letterSpacing: theme.spacing(0.5),
+  },
   title: {
     flexGrow: 1,
-    letterSpacing: theme.spacing(0.5)
+    color: '#000000',
+    fontSize: '2em',
+    letterSpacing: theme.spacing(0.5),
   },
+  krn: {
+    fontFamily: 'Yeon Sung, cursive',
+  },
+  eng: {
+    fontFamily: 'Open Sans, sans-serif',
+  }
 }))
 
 function Header(props) {
@@ -66,10 +88,10 @@ function Header(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant='h6'>
+          <Typography className={cx(classes.title, classes.krn)} variant='h6'>
             목양장로교회
           </Typography>
-          <Typography className={classes.title} variant='h6'>
+          <Typography className={cx(classes.title, classes.eng)} variant='h6'>
             Moakyang Presbyterian Church
           </Typography>
           <Button color='inherit'>Login</Button>
@@ -84,6 +106,7 @@ function Header(props) {
           >
             {Object.values(HEADER_STATES).map((i, v) => (
               <Tab
+                className={classes.subHeader}
                 disableFocusRipple
                 disableRipple
                 key={v}
@@ -91,7 +114,6 @@ function Header(props) {
                 data-key={v}
                 onClick={e => {
                   const ct = e.currentTarget
-                  onChangeHeader(v)
                   setToggle(true)
                   setAnchorEl(ct)
                   setsubMenu(SUB_HEADER_STATES[v])
