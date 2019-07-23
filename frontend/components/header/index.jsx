@@ -58,9 +58,11 @@ const useStyles = makeStyles(theme => ({
   },
   krn: {
     fontFamily: 'Yeon Sung, cursive',
+    minWidth: '165px'
   },
   eng: {
     fontFamily: 'Open Sans, sans-serif',
+    minWidth: '590px'
   }
 }))
 
@@ -96,7 +98,10 @@ function Header(props) {
           <Button color='inherit'>Login</Button>
         </Toolbar>
       </AppBar>
-      <ClickAwayListener onClickAway={closeToggle}>
+      <ClickAwayListener onClickAway={() => {
+          closeToggle()
+          onChangeHeader(false)
+        }}>
         <Paper className={classes.root}>
           <Tabs
             value={value}
@@ -117,6 +122,7 @@ function Header(props) {
                   const ct = e.currentTarget
                   setToggle(true)
                   setAnchorEl(ct)
+                  onChangeHeader(v)
                   setsubMenu(SUB_HEADER_STATES[v])
                   setRouteLink(HEADER_STATES_LINKS[v])
                 }}
