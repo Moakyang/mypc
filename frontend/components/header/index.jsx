@@ -28,8 +28,7 @@ import {
 const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: '1400px',
-    overflowX: 'hidden',
-    overflowY: 'auto',
+    boxShadow: 'None',
     flexGrow: 1,
     margin: '0 auto',
     paddingTop: '2em',
@@ -106,6 +105,8 @@ function Header(props) {
           >
             {Object.values(HEADER_STATES).map((i, v) => (
               <Tab
+                aria-owns={open ? 'menu-list-grow' : undefined}
+                aria-haspopup={'true'}
                 className={classes.subHeader}
                 disableFocusRipple
                 disableRipple
